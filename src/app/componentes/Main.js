@@ -3,13 +3,15 @@ import Image from 'next/image';
 import { useEffect, useState } from "react";
 import styles from "./menu.module.css"
 import Link from "next/link";
+import Carregando from './Carregando';
 
 const Main = () => {
 
   const [listaDeProduto, setListaDeProduto] = useState([])
 
+
   useEffect(() => {
-    const getProduct = async () => {
+    const pegarProduto = async () => {
         const resposta = await fetch('/api',
           {
             next:
@@ -18,8 +20,12 @@ const Main = () => {
         const produto = await resposta.json();
         setListaDeProduto(produto)
     }
-    getProduct()
+    pegarProduto()
   }, [])
+
+  if (listaDeProduto[0] == null) {
+    return <Carregando />
+  }
 
   return (
     <main className={styles.listaProdutos}>

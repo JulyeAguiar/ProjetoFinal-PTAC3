@@ -89,3 +89,7 @@
     }
   }
   
+  .carregar{
+    display: flex;
+    justify-content: center;
+  }
