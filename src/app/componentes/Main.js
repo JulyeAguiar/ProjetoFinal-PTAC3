@@ -4,14 +4,17 @@ import { useEffect, useState } from "react";
 import styles from "./menu.module.css"
 import Link from "next/link";
 import Carregando from './Carregando';
+import ErrorFetch from './ErroComOFetch';
 
 const Main = () => {
 
   const [listaDeProduto, setListaDeProduto] = useState([])
+  const [Erro, setErro] = useState(false)
 
 
   useEffect(() => {
     const pegarProduto = async () => {
+      try {
         const resposta = await fetch('/api',
           {
             next:
@@ -19,9 +22,18 @@ const Main = () => {
           });
         const produto = await resposta.json();
         setListaDeProduto(produto)
+      }
+
+      catch {
+        setErro(true)
+      }
     }
     pegarProduto()
   }, [])
+
+  if(Erro == true){
+    return <ErrorFetch/>
+  }
 
   if (listaDeProduto[0] == null) {
     return <Carregando />
