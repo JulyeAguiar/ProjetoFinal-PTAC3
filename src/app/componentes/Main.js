@@ -15,7 +15,7 @@ const Main = () => {
   useEffect(() => {
     const pegarProduto = async () => {
       try {
-        const resposta = await fetch('/api',
+        const resposta = await fetch('/api/',
           {
             next:
               { revalidate: 1 }
@@ -29,7 +29,8 @@ const Main = () => {
       }
     }
     pegarProduto()
-  }, [])
+  }
+  , [])
 
   if(Erro == true){
     return <ErrorFetch/>
@@ -45,7 +46,7 @@ const Main = () => {
       {listaDeProduto.map((produto) => (
 
         <div className={styles.cartaoProduto}>
-          <Link href={"/api/" + produto.id} key={produto.id} className={styles.a}>
+          <Link href={"/produto/" + produto.id} key={produto.id} className={styles.a}>
 
             <div className={styles.imagemContainer}>
               <Image className={styles.imagemProduto} width={300} height={300} src={produto.foto} alt={produto.produto} />
@@ -55,6 +56,8 @@ const Main = () => {
               <p className={styles.nomeProduto}>{produto.produto}</p>
               <p className={styles.serieProduto}>{produto.serie}</p>
               <p className={styles.precoProduto}>R${produto.preco}</p>
+              <p className={styles.precoProduto}>R${produto.tipo}</p>
+              <p className={styles.precoProduto}>R${produto.descricao}</p>
             </div>
 
           </Link>

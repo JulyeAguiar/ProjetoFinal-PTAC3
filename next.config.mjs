@@ -2,7 +2,7 @@
 const nextConfig = {
 
     images:{
-        domains:["img.br.my-best.com"]
+        domains:["img.br.my-best.com","img.br.my-best.com"]
     }
 };
 
