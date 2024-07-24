@@ -10,7 +10,8 @@ const Main = () => {
 
   const [listaDeProduto, setListaDeProduto] = useState([])
   const [Erro, setErro] = useState(false)
-
+  const [listaCompleta, setListaCompleta] = useState([])
+  const [textoPesquisa, setTextoPesquisa] = useState("")
 
   useEffect(() => {
     const pegarProduto = async () => {
@@ -22,6 +23,7 @@ const Main = () => {
           });
         const produto = await resposta.json();
         setListaDeProduto(produto)
+        setListaCompleta(produto)
       }
 
       catch {
@@ -52,49 +54,71 @@ const Main = () => {
     setListaDeProduto(lisAux)
   }
 
+  const pesquisar = (text) => {
+    setTextoPesquisa(text)
+
+    if (text.trim() == "") {
+      setListaDeProduto(listaCompleta)
+      return
+    }
+    const novaLista = listaDeProduto.filter((produto) =>
+      produto.produto.toUpperCase().trim().includes(textoPesquisa.toUpperCase())//o segundo .produto é o "titulo"
+    )
+    setListaDeProduto(novaLista)
+  }
+
   if (Erro == true) {
     return <ErrorFetch />
   }
 
-  if (listaDeProduto[0] == null) {
+  if (listaCompleta[0] == null) {
     return <Carregando />
   }
 
   return (
     <>
-    <div className={styles.body}>
-      <br/>
-      <div>
-        <div className={styles.filterContainer}>
-          <button className={styles.filterButton} onClick={filtro_AZ}>Produtos de A a Z</button>
-          <button className={styles.filterButton} onClick={filtro_ZA}>Produtos de Z a A</button>
-          <button className={styles.filterButton} onClick={filtro_baratoCaro}>Mais caro para o mais barato</button>
-          <button className={styles.filterButton} onClick={filtroCarobarato}>Mais barato para o mais caro</button>
-        </div>
-      </div>
-
-      <main className={styles.listaProdutos}>
-
-        {listaDeProduto.map((produto) => (
-
-          <div className={styles.cartaoProduto}>
-            <Link href={"/produto/" + produto.id} key={produto.id} className={styles.a}>
-
-              <div className={styles.imagemContainer}>
-                <Image className={styles.imagemProduto} width={300} height={300} src={produto.foto} alt={produto.produto} />
-              </div>
-
-              <div className={styles.detalhesProduto}>
-                <p className={styles.nomeProduto}>{produto.produto}</p>
-                <p className={styles.serieProduto}>{produto.serie}</p>
-                <p className={styles.precoProduto}>R${produto.preco}</p>
-                <p className={styles.precoProduto}>Tema: {produto.tema}</p>
-              </div>
-
-            </Link>
+      <div className={styles.body}>
+        <br />
+        <div>
+        <div className={styles.searchContainer}>
+                    <input
+                        type="text"
+                        value={textoPesquisa}
+                        placeholder="Pesquise um produto"
+                        onChange={(event) => pesquisar(event.target.value)}
+                        className={styles.searchInput}
+                    />
+                </div>
+          <div className={styles.filterContainer}>
+            <button className={styles.filterButton} onClick={filtro_AZ}>Produtos de A a Z</button>
+            <button className={styles.filterButton} onClick={filtro_ZA}>Produtos de Z a A</button>
+            <button className={styles.filterButton} onClick={filtro_baratoCaro}>Mais caro para o mais barato</button>
+            <button className={styles.filterButton} onClick={filtroCarobarato}>Mais barato para o mais caro</button>
           </div>
-        ))}
-      </main>
+        </div>
+
+        <main className={styles.listaProdutos}>
+
+          {listaDeProduto.map((produto) => (
+
+            <div className={styles.cartaoProduto}>
+              <Link href={"/produto/" + produto.id} key={produto.id} className={styles.a}>
+
+                <div className={styles.imagemContainer}>
+                  <Image className={styles.imagemProduto} width={300} height={300} src={produto.foto} alt={produto.produto} />
+                </div>
+
+                <div className={styles.detalhesProduto}>
+                  <p className={styles.nomeProduto}>{produto.produto}</p>
+                  <p className={styles.serieProduto}>{produto.serie}</p>
+                  <p className={styles.precoProduto}>R${produto.preco}</p>
+                  <p className={styles.precoProduto}>Tema: {produto.tema}</p>
+                </div>
+
+              </Link>
+            </div>
+          ))}
+        </main>
       </div>
     </>
   );

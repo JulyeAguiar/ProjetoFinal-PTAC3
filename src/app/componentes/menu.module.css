@@ -219,3 +219,28 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra delicada ao clicar */
 }
 
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.searchInput {
+  width: 300px; /* Largura da barra de pesquisa */
+  padding: 10px;
+  border: 2px solid #9370db; /* Borda roxa */
+  border-radius: 20px; /* Borda arredondada */
+  font-size: 16px; /* Tamanho da fonte */
+  outline: none; /* Remove o outline padrão */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Animações suaves */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra delicada */
+}
+
+.searchInput::placeholder {
+  color: #9370db; /* Cor do placeholder */
+}
+
+.searchInput:focus {
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada ao focar */
+  transform: scale(1.05); /* Leve aumento de tamanho ao focar */
+}
