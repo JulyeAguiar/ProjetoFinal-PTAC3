@@ -1,4 +1,13 @@
-
+.body {
+  background-image: url('https://www.kidslolsurprise.com/cdn/shop/t/31/assets/bg-stripe-1.jpg');
+  background-repeat: repeat; /* Faz a imagem repetir em ambas as direções */
+  background-size: auto; /* Mantém o tamanho original da imagem */
+  background-position: top left; /* Posiciona a imagem no topo esquerdo */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Fonte padrão para o corpo */
+}
+  
   .listaProdutos {
     display: flex;
     flex-wrap: wrap;
@@ -96,3 +105,117 @@
     height: 100vh; 
   }
   
+/* HEADER ////////////////////////////// */
+/* styles.module.css */
+/* styles.module.css */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff; /* Cor de fundo da header */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar um efeito elevado */
+  z-index: 1000; /* Garante que a header fique sobre outros elementos */
+  padding: 10px 20px; /* Adiciona padding ao header */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navList {
+  list-style-type: none; /* Remove as bolinhas do ul */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navItem {
+  margin-right: 20px; /* Espaçamento entre os itens da lista */
+}
+
+.navLink {
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: #000; /* Cor do texto dos links */
+}
+
+.navLink:hover {
+  color: #0070f3; /* Cor do texto ao passar o mouse */
+}
+
+.footer {
+  width: 100%;
+  background-color: pink; /* Cor de fundo do footer */
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar um efeito elevado */
+  padding: 10px 20px; /* Adiciona padding ao footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerList {
+  list-style-type: none; /* Remove as bolinhas do ul */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerItem {
+  margin: 0 10px; /* Espaçamento entre os itens da lista */
+}
+
+.footerLink {
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: #000; /* Cor do texto dos links */
+}
+
+.footerLink:hover {
+  color: #0070f3; /* Cor do texto ao passar o mouse */
+}
+
+.linha {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.logo {
+  margin-top: 10px;
+}
+
+
+/* BOTÕES DE FILTRO */
+
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.filterButton {
+  background-color: #add8e6; /* Cor de fundo azul claro */
+  border: 2px solid #87cefa; /* Borda azul mais escura */
+  color: #fff; /* Cor do texto */
+  padding: 10px 20px; /* Espaçamento interno */
+  margin: 0 10px; /* Espaçamento entre os botões */
+  border-radius: 20px; /* Borda arredondada */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de mãozinha ao passar o mouse */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animações suaves */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra delicada */
+}
+
+.filterButton:hover {
+  background-color: #87cefa; /* Cor de fundo azul mais escura ao passar o mouse */
+  transform: scale(1.1); /* Leve aumento de tamanho ao passar o mouse */
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada ao passar o mouse */
+}
+
+.filterButton:active {
+  background-color: #4682b4; /* Cor de fundo azul escura ao clicar */
+  transform: scale(1.05); /* Leve redução de tamanho ao clicar */
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra delicada ao clicar */
+}
+

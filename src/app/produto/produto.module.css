@@ -18,10 +18,6 @@
     transition: transform 0.3s;
   }
   
-  .cartaoProduto:hover {
-    transform: scale(1.02);
-  }
-  
   /* Container da imagem */
   .imagemContainer {
     width: 50%;
